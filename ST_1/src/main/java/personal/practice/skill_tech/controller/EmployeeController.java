@@ -27,7 +27,7 @@ public class EmployeeController {
         return "/views/index";
     }
 
-    @GetMapping("/showNewEmployeeForm")
+    @GetMapping("/showNewEmployeeForm") // CRUD - read
     public String showNewEmployeeForm(Model model) {
 
         // create model attribute to bind form data
@@ -37,7 +37,7 @@ public class EmployeeController {
         return "/views/base/newEmployee";
     }
 
-    @PostMapping("/saveEmployee")
+    @PostMapping("/saveEmployee") // CRUD - create
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
 
         // save employee to database
@@ -46,7 +46,7 @@ public class EmployeeController {
         return "redirect:/";
     }
 
-    @GetMapping("/showFormForUpdate/{id}")
+    @GetMapping("/showFormForUpdate/{id}") // CRUD - update
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
         // get employee from the service
@@ -57,4 +57,14 @@ public class EmployeeController {
 
         return "/views/base/updateEmployee";
     }
+
+    @GetMapping("/deleteEmployee/{id}") // CRUD - delete
+    public String deleteEmployee(@PathVariable(value = "id") long id) {
+
+        // call delete employee method
+        this.employeeService.deleteEmployeeById(id);
+
+        return "redirect:/";
+    }
+
 }
