@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import personal.practice.skill_tech.model.Employee;
 import personal.practice.skill_tech.service.EmployeeService;
 
@@ -32,5 +34,15 @@ public class EmployeeController {
         model.addAttribute("employee", employee);
 
         return "/views/base/newEmployee";
+    }
+
+
+    @PostMapping("/saveEmployee")
+    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
+
+        // save employee to database
+        employeeService.saveEmployee(employee);
+
+        return "redirect:/";
     }
 }

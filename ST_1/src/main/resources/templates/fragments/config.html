@@ -10,14 +10,12 @@
   <meta name="viewport" content="width=device-width initial-scale=1">
 
   <!-- Common CSS -->
-  <th:block th:replace="~{common/styles}"></th:block>
+  <th:block th:insert="~{common/styles}"></th:block>
+  <!-- Common JS -->
+  <th:block th:insert="~{common/scripts}"></th:block>
 
   <!-- Each Page's CSS -->
   <th:block layout:fragment="css"></th:block>
-
-  <!-- Common JS -->
-  <th:block th:replace="~{common/scripts}"></th:block>
-
   <!-- Each Page's JS -->
   <th:block layout:fragment="script"></th:block>
 </th:block>

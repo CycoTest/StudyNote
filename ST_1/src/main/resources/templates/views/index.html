@@ -4,42 +4,42 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layouts/default}">
 <head>
-<!-- 현재 화면에서만 사용하는 css -->
-<th:block layout:fragment="css">
-    <!-- link tag -->
-</th:block>
-<th:block layout:fragment="script">
-    <!-- script tag -->
-</th:block>
+    <!-- 현재 화면에서만 사용하는 css -->
+    <th:block layout:fragment="css">
+        <!-- link tag -->
+    </th:block>
+    <th:block layout:fragment="script">
+        <!-- script tag -->
+    </th:block>
 
-<th:block layout:fragment="Title">
-    <title>Employee Management System</title>
-</th:block>
+    <th:block layout:fragment="Title">
+        <title>Employee Management System</title>
+    </th:block>
 </head>
 <body>
-<div>
-<th:block layout:fragment="Content">
-    <div class="container my-2">
-    <h1> Employees List</h1>
-    <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
-    <table class="table table-striped table-responsive-md">
-            <thead>
-                <tr>
-                    <th> Employee First Name </th>
-                    <th> Employee Last Name </th>
-                    <th> Employee Email </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="employee : ${listEmployees}">
-                    <td th:text="${employee.firstName}"></td>
-                    <td th:text="${employee.lastName}"></td>
-                    <td th:text="${employee.email}"></td>
-                </tr>
-            </tbody>
-        </table>
+    <div>
+    <th:block layout:fragment="Content">
+        <div class="container my-2">
+        <h1> Employees List</h1>
+        <a th:href="@{/showNewEmployeeForm}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+        <table class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th> Employee First Name </th>
+                        <th> Employee Last Name </th>
+                        <th> Employee Email </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="employee : ${listEmployees}">
+                        <td th:text="${employee.firstName}"></td>
+                        <td th:text="${employee.lastName}"></td>
+                        <td th:text="${employee.email}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
     </div>
-</th:block>
-</div>
 </body>
 </html>
