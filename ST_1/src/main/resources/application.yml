@@ -7,13 +7,18 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/skill_tech?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username:
-    password: 
+    username: root
+    password: root
 
 # thymeleaf
   thymeleaf:
+    enabled: true
     cache: false
-  # Hibernate
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+
+# Hibernate
 
 # The SQL dialect makes Hibernate generate better SQL for the chosen database
 # Hibernate ddl auto (create, create-drop, validate, update)
