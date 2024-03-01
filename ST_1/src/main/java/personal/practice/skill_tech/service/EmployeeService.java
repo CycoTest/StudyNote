@@ -13,17 +13,20 @@ import java.util.Optional;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+
+    // CRUD - read
     public List<Employee> getAllEmployees() {
 
         return employeeRepository.findAll();
     }
 
+    // CRUD - save
     public void saveEmployee(Employee employee) {
 
         this.employeeRepository.save(employee);
     }
 
-
+    // CRUD - update
     public Employee getEmployeeById(long id) {
         Optional<Employee> optionalEmployee = employeeRepository.findById(id);
 
@@ -37,9 +40,11 @@ public class EmployeeService {
         return employee;
     }
 
+    // CRUD - delete
     public void deleteEmployeeById(long id) {
 
         this.employeeRepository.deleteById(id);
     }
 
+    
 }
