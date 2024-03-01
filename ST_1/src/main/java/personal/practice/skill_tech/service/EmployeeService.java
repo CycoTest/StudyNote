@@ -1,6 +1,9 @@
 package personal.practice.skill_tech.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import personal.practice.skill_tech.model.Employee;
 import personal.practice.skill_tech.repository.EmployeeRepository;
@@ -46,5 +49,11 @@ public class EmployeeService {
         this.employeeRepository.deleteById(id);
     }
 
-    
+    // pagination for Employee List Board
+    public Page<Employee> findPaginated(int pageNo, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+
+        return this.employeeRepository.findAll(pageable);
+    }
 }

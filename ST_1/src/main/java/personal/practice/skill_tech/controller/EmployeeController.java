@@ -1,7 +1,7 @@
 package personal.practice.skill_tech.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import personal.practice.skill_tech.model.Employee;
 import personal.practice.skill_tech.service.EmployeeService;
 
-@Slf4j
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 public class EmployeeController {
@@ -21,10 +22,10 @@ public class EmployeeController {
     // display list of employees
     @GetMapping("/")
     public String viewHome(Model model) {
-        log.info("employeeService = {}", employeeService.getAllEmployees());
-        model.addAttribute("listEmployees", employeeService.getAllEmployees());
+        // default pageNo = 1
+        return findPaginated(1, model);
 
-        return "/views/index";
+//        return "/views/index";
     }
 
     @GetMapping("/showNewEmployeeForm") // CRUD - read
@@ -65,6 +66,21 @@ public class EmployeeController {
         this.employeeService.deleteEmployeeById(id);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/page/{pageNo}") // pagination
+    public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 5;
+
+        Page<Employee> page = employeeService.findPaginated(pageNo, pageSize);
+        List<Employee> listEmployees = page.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", page.getTotalPages());
+        model.addAttribute("totalItems", page.getTotalElements());
+        model.addAttribute("listEmployees", listEmployees);
+
+        return "/views/index";
     }
 
 }
