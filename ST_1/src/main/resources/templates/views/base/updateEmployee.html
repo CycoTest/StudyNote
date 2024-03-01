@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <!-- 현재 화면에서만 사용하는 css -->
+    <th:block layout:fragment="css">
+        <!-- link tag -->
+    </th:block>
+    <th:block layout:fragment="script">
+        <!-- script tag -->
+    </th:block>
+
+    <th:block layout:fragment="Title">
+        <title>Employee Management System</title>
+    </th:block>
+</head>
+<body>
+<div>
+    <th:block layout:fragment="Content">
+        <div class="container">
+            <h1> Employee Management System </h1>
+            <hr>
+            <h2> Update Employee </h2>
+
+            <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
+                <!-- Add hidden form field to handle update -->
+                <input type="hidden" th:field="*{id}">
+
+                <input type="text" th:field="*{firstName}" class="form-control mb-4 col-4">
+
+                <input type="text" th:field="*{lastName}" class="form-control mb-4 col-4">
+
+                <input type="text" th:field="*{email}" class="form-control mb-4 col-4">
+
+                <button type="submit" class="btn btn-info col-2"> Update Employee </button>
+            </form>
+
+            <hr>
+
+            <a th:href="@{/}"> Back to Employee List </a>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>
