@@ -1,0 +1,19 @@
+/* add margin between label and input tag */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.control-label {
+    margin-bottom: 10px;
+}
+
+/* make each tag text font thicker */
+h1 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+label {
+    font-weight: bold;
+}

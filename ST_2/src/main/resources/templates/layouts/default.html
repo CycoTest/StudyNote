@@ -7,14 +7,12 @@
 <th:block layout:fragment="Title"></th:block>
 </head>
 <body>
-<!-- Header -->
+<!-- Navigation bar (Header) -->
 <th:block th:insert="~{fragments/header :: headerFragment}"></th:block>
 
 <div class="container">
-    <div>
-        <!-- Content -->
-        <th:block layout:fragment="Content"></th:block>
-    </div>
+    <!-- Content -->
+    <th:block layout:fragment="Content"></th:block>
 </div>
 
 <!-- Footer -->
