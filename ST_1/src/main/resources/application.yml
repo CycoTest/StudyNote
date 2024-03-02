@@ -7,8 +7,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/skill_tech?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: root
+    username: MySQL 사용자 아이디
+    password: MySQL 사용자 비밀번호
 
 # thymeleaf
   thymeleaf:
