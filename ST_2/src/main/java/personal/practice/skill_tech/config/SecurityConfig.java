@@ -30,7 +30,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests((authorize) -> authorize
-                    .requestMatchers("/registration**", "/js/**", "/css/**", "/img/**").permitAll()
+                    .requestMatchers("/registration**", "/js/**", "/assests/css/**", "/img/**").permitAll()
                     .anyRequest().authenticated())
             .formLogin(form -> form
                     .loginPage("/login").permitAll())

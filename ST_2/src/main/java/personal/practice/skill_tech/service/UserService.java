@@ -11,11 +11,10 @@ import org.springframework.stereotype.Service;
 import personal.practice.skill_tech.model.Role;
 import personal.practice.skill_tech.model.User;
 import personal.practice.skill_tech.repository.UserRepository;
-import personal.practice.skill_tech.web.dto.UserRegirstDto;
+import personal.practice.skill_tech.web.dto.UserRegistrDto;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +24,7 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public User save(UserRegirstDto regirstDto) {
+    public User save(UserRegistrDto regirstDto) {
         User user = new User();
         user.setFirstName(regirstDto.getFirstName());
         user.setLastName(regirstDto.getLastName());

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <!-- 현재 화면에서만 사용하는 css -->
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" href="/assests/css/registration.css">
+    </th:block>
+    <th:block layout:fragment="script">
+        <!-- script tag -->
+    </th:block>
+
+    <th:block layout:fragment="Title">
+        <title>Registration and Login App</title>
+    </th:block>
+</head>
+<body>
+<th:block layout:fragment="Content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <h1> User Login Page </h1>
+                <form th:action="@{/login}" method="post">
+
+                    <!-- error message -->
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Invalid username or password
+                        </div>
+                    </div>
+
+                    <!-- logout message -->
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">
+                            You have been logged out
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username"> Username</label> :
+                        <input type="text" class="form-control" id="username"
+                            placeholder="Enter Email ID" autofocus="autofocus"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"> Password</label> :
+                        <input type="text" class="form-control" id="password"
+                               placeholder="Enter Password"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6 col-sm-offset-3">
+                                <input type="submit" name="Login-submit" id="Login-submit"
+                                    class="form-control btn btn-primary" value="Log In">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <span> New user? <a href="/" th:href="@{/registration}">Register Here</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

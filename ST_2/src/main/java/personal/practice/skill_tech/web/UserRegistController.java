@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import personal.practice.skill_tech.service.UserService;
-import personal.practice.skill_tech.web.dto.UserRegirstDto;
+import personal.practice.skill_tech.web.dto.UserRegistrDto;
 
 @Controller
 @RequestMapping("/registration")
@@ -18,20 +18,20 @@ public class UserRegistController {
     private final UserService userService;
 
     @ModelAttribute("user")
-    public UserRegirstDto userRegirstDto() {
+    public UserRegistrDto userRegirstDto() {
 
-        return new UserRegirstDto();
+        return new UserRegistrDto();
     }
 
     @GetMapping
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new UserRegirstDto());
+        model.addAttribute("user", new UserRegistrDto());
 
         return "/views/registration";
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user")UserRegirstDto regirstDto) {
+    public String registerUserAccount(@ModelAttribute("user") UserRegistrDto regirstDto) {
         userService.save(regirstDto);
 
         return "redirect:/registration?success";
